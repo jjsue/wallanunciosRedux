@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-
+import {registerCall} from './../api-calls/api-calls'
 export default class Register extends Component{
   constructor(props){
     super(props);
     this.state = {
-        mailValue: '',
-        passwordValue: ''
+        mailValue: 'prueba@prueba.com',
+        passwordValue: '1234'
     }
   }
     changeHandlerMail = (event) => {
@@ -16,7 +16,7 @@ export default class Register extends Component{
         }
     submitHandler = (event) => {
         event.preventDefault();
-        alert(`Mail: ${this.state.mailValue} Contraseña: ${this.state.passwordValue}`);
+        registerCall(this.state.mailValue, this.state.passwordValue);
     }
     render(){
         const {mailValue, passwordValue} = this.state;
