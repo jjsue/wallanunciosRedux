@@ -12,8 +12,8 @@ function registerCall(user,pass){
                         accept: 'application/json'
                     },
             data: {
-                username: {user},
-                password: {pass}
+                username: `${user}`,
+                password: `${pass}`
             },
             })
             .then(function (response) {
