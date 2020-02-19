@@ -1,13 +1,9 @@
 const axios = require('axios').default;
 
-function registerCall(user,pass){
-    console.log(user);
-    console.log(pass);
-    return (
+async function registerCall(user,pass){
         axios({
             method: 'POST',
             url: 'http://34.89.93.186:8080/apiv1/register',
-            //responseType: 'application/json',
             headers: {
                         accept: 'application/json'
                     },
@@ -17,15 +13,13 @@ function registerCall(user,pass){
             },
             })
             .then(function (response) {
-                console.log(`Response: ${response}`);
-                console.log(response);
+                return response;
             })
             .catch(function (error) {
-                console.log(`Error: ${error}`);
+                return error;
             })
             .finally(function () {
-                console.log("Finally");
+                console.log("Terminada llamada");
             })
-    )
 }
 export {registerCall};

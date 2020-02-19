@@ -5,7 +5,8 @@ export default class Register extends Component{
     super(props);
     this.state = {
         mailValue: 'prueba@prueba.com',
-        passwordValue: '1234'
+        passwordValue: '1234',
+        responseState: null
     }
   }
     changeHandlerMail = (event) => {
@@ -16,7 +17,10 @@ export default class Register extends Component{
         }
     submitHandler = (event) => {
         event.preventDefault();
-        registerCall(this.state.mailValue, this.state.passwordValue);
+        this.setState({responseState: registerCall(this.state.mailValue, this.state.passwordValue)});
+        console.log(this.state.responseState);
+        this.state.responseState = registerCall(this.state.mailValue, this.state.passwordValue);
+        console.log(this.state.responseState);
     }
     render(){
         const {mailValue, passwordValue} = this.state;
