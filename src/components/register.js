@@ -6,7 +6,8 @@ export default class Register extends Component{
     this.state = {
         mailValue: 'prueba@prueba.com',
         passwordValue: '1234',
-        responseState: null
+        responseState: null,
+        responseMessage: ''
     }
   }
     changeHandlerMail = (event) => {
@@ -19,6 +20,15 @@ export default class Register extends Component{
         event.preventDefault();
         this.setState({responseState: await registerCall(this.state.mailValue, this.state.passwordValue)});
         console.log(this.state.responseState);
+        if (this.state.responseState.success === false){
+            this.setState({responseMessage: this.state.responseState.error});
+        }
+        else if (this.state.responseState.success === true){
+            this.setState({responseMessage: "Te has registrado correctamente, en unos segundos serás redirigido al login."});
+        }
+        else{
+            this.setState({responseMessage: "Parece que algo ha ido mal, por favor, intenta de nuevo en unos segundos."});
+        }
     }
     render(){
         const {mailValue, passwordValue} = this.state;
@@ -31,6 +41,7 @@ export default class Register extends Component{
                     <input type='password' value={passwordValue} required onChange={this.changeHandlerPass}></input><br/>
                     <input type='submit' value='Registro'></input><br/>
                 </form>
+                <h2>{this.state.responseMessage}</h2>
             </div>
         )
     }

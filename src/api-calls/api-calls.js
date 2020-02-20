@@ -13,10 +13,10 @@ async function registerCall(user,pass){
             },
             })
             .then(function (response) {
-                return response;
+                return response.data;
             })
             .catch(function (error) {
-                console.log(error.response.data);
+                //console.log(error.response.data);
                 return error.response.data;
             })
             .finally(function () {

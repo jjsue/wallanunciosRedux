@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Register from './components/register'
+import MyRouter from './components/router';
 export default class App extends Component{
   constructor(props){
     super(props);
@@ -7,7 +7,7 @@ export default class App extends Component{
   render(){
     return(
       <div>
-        <Register/>
+        <MyRouter/>
       </div>
     )
   }
