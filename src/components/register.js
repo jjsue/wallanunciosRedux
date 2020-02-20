@@ -15,11 +15,9 @@ export default class Register extends Component{
     changeHandlerPass = (event) => {
         this.setState({ passwordValue: event.target.value });
         }
-    submitHandler = (event) => {
+    submitHandler = async (event) => {
         event.preventDefault();
-        this.setState({responseState: registerCall(this.state.mailValue, this.state.passwordValue)});
-        console.log(this.state.responseState);
-        this.state.responseState = registerCall(this.state.mailValue, this.state.passwordValue);
+        this.setState({responseState: await registerCall(this.state.mailValue, this.state.passwordValue)});
         console.log(this.state.responseState);
     }
     render(){
