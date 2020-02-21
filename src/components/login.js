@@ -19,7 +19,6 @@ export default class Login extends Component{
     submitHandler = async (event) => {
         event.preventDefault();
         this.setState({responseState: await loginCall(this.state.mailValue, this.state.passwordValue)});
-        console.log(this.state.responseState);
         if (this.state.responseState.success === false){
             this.setState({responseMessage: this.state.responseState.error});
         }
