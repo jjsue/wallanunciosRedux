@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
 import RegisterComp from './register';
+import LoginComp from './login'
 export default class MyRouter extends Component{
   constructor(props){
     super(props);
@@ -25,6 +26,7 @@ export default class MyRouter extends Component{
                 <hr/>
                 <Switch>
                     <Route path="/register" component={RegisterComp} />
+                    <Route path="/login" component={LoginComp} />
                 </Switch>
             </Router>
             </>

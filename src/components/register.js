@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import {registerCall} from './../api-calls/api-calls'
+import {registerCall} from './../api-calls/api-calls';
+import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect, useHistory, useLocation } from "react-router-dom";
+
 export default class Register extends Component{
   constructor(props){
     super(props);
@@ -19,12 +21,12 @@ export default class Register extends Component{
     submitHandler = async (event) => {
         event.preventDefault();
         this.setState({responseState: await registerCall(this.state.mailValue, this.state.passwordValue)});
-        console.log(this.state.responseState);
         if (this.state.responseState.success === false){
             this.setState({responseMessage: this.state.responseState.error});
         }
         else if (this.state.responseState.success === true){
             this.setState({responseMessage: "Te has registrado correctamente, en unos segundos serás redirigido al login."});
+            setTimeout(function(){ window.location.pathname = 'login'; }, 3000);
         }
         else{
             this.setState({responseMessage: "Parece que algo ha ido mal, por favor, intenta de nuevo en unos segundos."});
