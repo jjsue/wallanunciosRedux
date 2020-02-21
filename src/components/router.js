@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
 import RegisterComp from './register';
 import LoginComp from './login'
+import AdsComp from './addlist'
 export default class MyRouter extends Component{
   constructor(props){
     super(props);
@@ -13,7 +14,7 @@ export default class MyRouter extends Component{
                 <nav>
                     <ul>
                         <li>
-                            <Link to = "/">Home</Link>
+                            <Link to = "/ads">Anuncios</Link>
                         </li>
                         <li>
                             <Link to = "/register">Registrarse</Link>
@@ -25,6 +26,7 @@ export default class MyRouter extends Component{
                 </nav>
                 <hr/>
                 <Switch>
+                    <Route path="/ads" component={AdsComp} />
                     <Route path="/register" component={RegisterComp} />
                     <Route path="/login" component={LoginComp} />
                 </Switch>

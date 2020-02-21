@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import {registerCall} from './../api-calls/api-calls';
-import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect, useHistory, useLocation } from "react-router-dom";
-
 export default class Register extends Component{
   constructor(props){
     super(props);
