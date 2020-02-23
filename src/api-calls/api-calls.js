@@ -54,11 +54,11 @@ async function addCall(user,pass){
         withCredentials: true,
         })
         .then(function (response) {
-            console.log(response);
+            //console.log(response);
             return response.data;
         })
         .catch(function (error) {
-            console.log(error.response.data);
+            //console.log(error.response.data);
             return error.response.data;
         })
         .finally(function () {

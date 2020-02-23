@@ -4,7 +4,13 @@ class AddMount extends Component{
   render(){
     return(
       <>
-      <p>{this.props.data.results[0].name}</p>
+      <div className="Anuncio">
+        <h2>{this.props.data[0].name}</h2>
+        <img src={this.props.data[0].photo} alt={this.props.data[0].name}/> 
+        <p>Precio: {this.props.data[0].price}</p>
+        <h3>Descripción:</h3>
+        <p>{this.props.data[0].description}</p>
+      </div>
       </>
     )
   }
@@ -19,7 +25,7 @@ class AddMount3 extends Component{
 function RenderOrNot(props) {
   const callDo = props.callDo;
   if (callDo) {
-    return <AddMount data = {props.data}/>;
+    return <AddMount data = {props.data.results}/>;
   }
   return <AddMount3 />;
 }
@@ -37,7 +43,6 @@ export default class AdsList extends Component{
       console.log("False");
     }
     else if(this.state.responseState.success === true){
-      console.log("True");
       this.setState({childrenToRender: true});
     }
     else{
@@ -58,7 +63,6 @@ export default class AdsList extends Component{
         <h1>Listado de anuncios:</h1>
         <RenderOrNot callDo={this.state.childrenToRender} data={this.state.responseState}/>
         <p>{this.state.importantInfo}</p>
-
       </>
     )
   }
