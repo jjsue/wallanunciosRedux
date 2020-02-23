@@ -11,6 +11,7 @@ async function registerCall(user,pass){
                 username: `${user}`,
                 password: `${pass}`
             },
+            withCredentials: true,
             })
             .then(function (response) {
                 return response.data;
@@ -34,6 +35,7 @@ async function loginCall(user,pass){
             username: `${user}`,
             password: `${pass}`
         },
+        withCredentials: true,
         })
         .then(function (response) {
             return response.data;
@@ -49,6 +51,7 @@ async function addCall(user,pass){
     return axios({
         method: 'GET',
         url: 'http://34.89.93.186:8080/apiv1/anuncios',
+        withCredentials: true,
         })
         .then(function (response) {
             console.log(response);
