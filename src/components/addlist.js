@@ -4,10 +4,24 @@ class AddMount extends Component{
   render(){
     return(
       <>
-      <p>AddMount</p>
+      <p>{this.props.data.results[0].name}</p>
       </>
     )
   }
+}
+
+class AddMount3 extends Component{
+  render(){
+    return null;
+  }
+}
+
+function RenderOrNot(props) {
+  const callDo = props.callDo;
+  if (callDo) {
+    return <AddMount data = {props.data}/>;
+  }
+  return <AddMount3 />;
 }
 export default class AdsList extends Component{
   constructor(props){
@@ -15,6 +29,7 @@ export default class AdsList extends Component{
       this.state = {
         responseState: null,
         importantInfo: null,
+        childrenToRender: false,
     }
   }
   evaluator = () => {
@@ -23,6 +38,7 @@ export default class AdsList extends Component{
     }
     else if(this.state.responseState.success === true){
       console.log("True");
+      this.setState({childrenToRender: true});
     }
     else{
       this.setState({importantInfo: "Ha ocurrido un error, te redirigimos al login para que puedas volver a iniciar sesión e intentarlo de nuevo."});
@@ -40,8 +56,9 @@ export default class AdsList extends Component{
     return(
       <>
         <h1>Listado de anuncios:</h1>
-        <AddMount/>
+        <RenderOrNot callDo={this.state.childrenToRender} data={this.state.responseState}/>
         <p>{this.state.importantInfo}</p>
+
       </>
     )
   }
