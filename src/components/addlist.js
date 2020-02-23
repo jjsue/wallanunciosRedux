@@ -5,11 +5,11 @@ class AddMount extends Component{
     return(
       <>
       <div className="Anuncio">
-        <h2>{this.props.data[0].name}</h2>
-        <img src={this.props.data[0].photo} alt={this.props.data[0].name}/> 
-        <p>Precio: {this.props.data[0].price}</p>
+        <h2>{this.props.data.name}</h2>
+        <img src={this.props.data.photo} alt={this.props.data.name}/> 
+        <p>Precio: {this.props.data.price}</p>
         <h3>Descripción:</h3>
-        <p>{this.props.data[0].description}</p>
+        <p>{this.props.data.description}</p>
       </div>
       </>
     )
@@ -24,8 +24,16 @@ class AddMount3 extends Component{
 
 function RenderOrNot(props) {
   const callDo = props.callDo;
+
   if (callDo) {
-    return <AddMount data = {props.data.results}/>;
+    return(
+    <>
+    <AddMount data = {props.data.results[0]}/>
+    <AddMount data = {props.data.results[1]}/>
+    <AddMount data = {props.data.results[2]}/>
+    <AddMount data = {props.data.results[3]}/>
+    </>
+    )
   }
   return <AddMount3 />;
 }
