@@ -24,15 +24,16 @@ class AddMount3 extends Component{
 
 function RenderOrNot(props) {
   const callDo = props.callDo;
-
+  let toShow = [];
   if (callDo) {
+    for (let i=0; i<props.data.count; i++){
+      toShow.push(<AddMount key = {i} data = {props.data.results[i]}/>);
+    }
+    console.log(toShow);
     return(
-    <>
-    <AddMount data = {props.data.results[0]}/>
-    <AddMount data = {props.data.results[1]}/>
-    <AddMount data = {props.data.results[2]}/>
-    <AddMount data = {props.data.results[3]}/>
-    </>
+    <div className="Anuncios">
+      {toShow}
+    </div>
     )
   }
   return <AddMount3 />;
