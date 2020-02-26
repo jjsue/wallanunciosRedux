@@ -29,7 +29,6 @@ class AddMount extends Component{
       for (let i=0; i<props.data.count; i++){
         toShow.push(<AddMount key = {i} data = {props.data.results[i]}/>);
       }
-      console.log(toShow);
       return(
       <div className="Anuncios">
         {toShow}
