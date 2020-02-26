@@ -9,6 +9,7 @@ class AddMount extends Component{
           <p>Precio: {this.props.data.price}</p>
           <h3>Descripción:</h3>
           <p>{this.props.data.description}</p>
+          <p>{this.props.data.type}</p>
         </div>
         </>
       )

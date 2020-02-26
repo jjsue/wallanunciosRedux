@@ -13,7 +13,8 @@ export default class AdsList extends Component{
   }
   evaluator = () => {
     if(this.state.responseState.success === false){
-      console.log("False");
+      this.setState({importantInfo: "Ha ocurrido un error, te redirigimos al login para que puedas volver a iniciar sesión e intentarlo de nuevo."});
+      setTimeout(function(){ window.location.pathname = 'login'; }, 3000);
     }
     else if(this.state.responseState.success === true){
       this.setState({childrenToRender: true});
