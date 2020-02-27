@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {addCall} from './../api-calls/api-calls';
-import {RenderOrNot} from './addlist-utils';
+import {RenderOrNot, createQueryString} from './addlist-utils';
 
 export default class AdsList extends Component{
   constructor(props){
@@ -12,7 +12,7 @@ export default class AdsList extends Component{
         childrenToRender: false,
         //Forms:
         formName: '',
-        formDescription: '',
+        formSellOrBuy: '',
         formTags: '',
         formPriceMin: '',
         formPriceMax: '',
@@ -43,8 +43,8 @@ export default class AdsList extends Component{
 nameController = (event) => {
   this.setState({formName: event.target.value});
 }
-descController = (event) => {
-  this.setState({formDescription: event.target.value});
+sellController = (event) => {
+  this.setState({formSellOrBuy: event.target.value});
 }
 tagController = (event) => {
   this.setState({formTags: event.target.value});
@@ -55,9 +55,9 @@ priceMinController = (event) => {
 priceMaxController = (event) => {
   this.setState({formPriceMax: event.target.value});
 }
-onSubmitController = (event) =>{
+onSubmitController = (event) => {
   event.preventDefault();
-  alert("Submit");
+  alert(createQueryString(this.state.formName, this.state.formSellOrBuy, this.state.formTags, this.state.formPriceMin, this.state.formPriceMax))
 }
   render(){
     const {formName, formDescription, formTags, formPriceMin, formPriceMax} = this.state;
@@ -66,9 +66,17 @@ onSubmitController = (event) =>{
         <form onSubmit={this.onSubmitController}>
           <h1>Busqueda:</h1>
           <input type="text" id="name" placeholder="Nombre" value={formName} onChange={this.nameController}></input>
-          <input type="text" id="description" placeholder ="Descripcion" value={formDescription} onChange={this.descController}></input>
+          <select id="compra-venta" onChange={this.sellController}>
+            <option value = "buy">Compra</option>
+            <option value = "sell">Venta</option>
+            <option value = "">Ninguno</option>
+            <option value = {formTags} selected>Compra o Venta</option>
+          </select>
           <select id="tags" onChange={this.tagController}>
             <option value = "lifestyle">Lifestyle</option>
+            <option value = "mobile">Mobile</option>
+            <option value = "motor">Motor</option>
+            <option value = "work">Work</option>
             <option value = "">Ninguno</option>
             <option value = {formTags} selected>Tag</option>
           </select>

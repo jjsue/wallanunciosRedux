@@ -14,28 +14,79 @@ class AddMount extends Component{
         </>
       )
     }
-  }
+}
   
-  class AddMount3 extends Component{
-    render(){
-      return null;
-    }
+class AddMount3 extends Component{
+  render(){
+    return null;
   }
+}
   
-  function RenderOrNot(props) {
-    const callDo = props.callDo;
-    let toShow = [];
-    if (callDo) {
-      for (let i=0; i<props.data.count; i++){
-        toShow.push(<AddMount key = {i} data = {props.data.results[i]}/>);
-      }
-      return(
-      <div className="Anuncios">
-        {toShow}
-      </div>
-      )
+function RenderOrNot(props) {
+  const callDo = props.callDo;
+  let toShow = [];
+  if (callDo) {
+    for (let i=0; i<props.data.count; i++){
+      toShow.push(<AddMount key = {i} data = {props.data.results[i]}/>);
     }
-    return <AddMount3 />;
+    return(
+    <div className="Anuncios">
+      {toShow}
+    </div>
+    )
   }
+  return <AddMount3 />;
+}
 
-export {RenderOrNot};
+function createQueryString(name, sellOrBuy, tags, priceMin, priceMax){
+  let queryString = '';
+  if(name !== ''){
+    queryString = '?name=' + name;
+  }
+  if(sellOrBuy !== ''){
+    if(sellOrBuy === 'sell'){
+      if (queryString === ''){
+        queryString = '?venta=true';
+      }
+      else{
+        queryString = queryString + '&venta=true';
+      }
+    }
+    else if(sellOrBuy === 'buy'){
+      if (queryString === ''){
+        queryString = '?venta=false';
+      }
+      else{
+        queryString = queryString + '&venta=false';
+      }
+    }
+  }
+  if (tags !==''){
+    if(queryString === ''){
+      queryString = '?tag=' + tags;
+    }
+    else{
+      queryString = queryString + '&tag=' + tags;
+    }
+  }
+  if (priceMin !== '' || priceMax !==''){
+    if (queryString === ''){
+      if(priceMin < priceMax){
+        queryString = '?price=' + priceMin + '-' + priceMax;
+      }
+      else{
+        queryString = '?price=' + priceMax + '-' + priceMin;
+      }
+    }
+    else{
+      if(priceMin < priceMax){
+        queryString = queryString + '&price=' + priceMin + '-' + priceMax;
+      }
+      else{
+        queryString = queryString + '&price=' + priceMax + '-' + priceMin;
+      }
+    }
+  }
+  return queryString;
+}
+export {RenderOrNot, createQueryString};
