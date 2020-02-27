@@ -47,10 +47,10 @@ async function loginCall(user,pass){
             console.log("Terminada llamada");
         })
 }
-async function addCall(user,pass){
+async function addCall(query){
     return axios({
         method: 'GET',
-        url: 'http://34.89.93.186:8080/apiv1/anuncios',
+        url: `http://34.89.93.186:8080/apiv1/anuncios${query}`,
         withCredentials: true,
         })
         .then(function (response) {

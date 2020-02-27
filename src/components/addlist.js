@@ -16,6 +16,7 @@ export default class AdsList extends Component{
         formTags: '',
         formPriceMin: '',
         formPriceMax: '',
+        queryString: '',
     }
   }
   //Llamadas
@@ -33,7 +34,7 @@ export default class AdsList extends Component{
     }
   }
   adCaller = async () => {
-    this.setState({responseState: await addCall()});
+    this.setState({responseState: await addCall(createQueryString(this.state.formName, this.state.formSellOrBuy, this.state.formTags, this.state.formPriceMin, this.state.formPriceMax))});
     this.evaluator();
   }
   componentDidMount(){
@@ -57,7 +58,9 @@ priceMaxController = (event) => {
 }
 onSubmitController = (event) => {
   event.preventDefault();
-  alert(createQueryString(this.state.formName, this.state.formSellOrBuy, this.state.formTags, this.state.formPriceMin, this.state.formPriceMax))
+  this.setState({childrenToRender: false});
+  this.setState({responseState: null});
+  this.adCaller();
 }
   render(){
     const {formName, formDescription, formTags, formPriceMin, formPriceMax} = this.state;
