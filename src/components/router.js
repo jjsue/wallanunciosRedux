@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } fr
 import RegisterComp from './register';
 import LoginComp from './login'
 import AdsComp from './addlist'
+import DetailComponent from './detail'
 export default class MyRouter extends Component{
   constructor(props){
     super(props);
@@ -26,7 +27,8 @@ export default class MyRouter extends Component{
                 </nav>
                 <hr/>
                 <Switch>
-                    <Route path="/ads" component={AdsComp} />
+                    <Route exact path="/ads" component={AdsComp} />
+                    <Route path="/ads/:adId" component={DetailComponent} />
                     <Route path="/register" component={RegisterComp} />
                     <Route path="/login" component={LoginComp} />
                 </Switch>

@@ -63,4 +63,20 @@ async function addCall(query){
             console.log("Terminada llamada");
         })
 }
-export {registerCall, loginCall, addCall};
+async function detailCall(id){
+    return axios({
+        method: 'GET',
+        url: `http://34.89.93.186:8080/apiv1/anuncios/${id}`,
+        withCredentials: true,
+        })
+        .then(function (response) {
+            return response.data;
+        })
+        .catch(function (error) {
+            return error.response.data;
+        })
+        .finally(function () {
+            console.log("Terminada llamada");
+        })
+}
+export {registerCall, loginCall, addCall, detailCall};

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
 class AddMount extends Component{
     render(){
       return(
         <>
         <div className="Anuncio">
-          <h2>{this.props.data.name}</h2>
+          <Link to={`/ads/${this.props.data._id}`}><h2>{this.props.data.name}</h2></Link>
           <img src={this.props.data.photo} alt={this.props.data.name}/> 
           <p>Precio: {this.props.data.price}</p>
-          <h3>Descripción:</h3>
-          <p>{this.props.data.description}</p>
           <p>{this.props.data.type}</p>
         </div>
         </>
