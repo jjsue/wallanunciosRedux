@@ -104,13 +104,4 @@ async function createAd(name, price, desc, tag, type, photo){
             console.log("Terminada llamada");
         })
 }
-
-/*{
-    name: string,
-    price: number,
-    description: string,
-    tags: Array[string],
-    type: "buy" ó "sell",
-    photo: string,
- }*/
 export {registerCall, loginCall, addCall, detailCall, createAd};

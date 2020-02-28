@@ -7,7 +7,6 @@ export default class CreateAd extends Component {
             //Llamadas:
             responseState: null,
             importantInfo: null,
-            childrenToRender: false,
             //Forms:
             formName: '',
             formSellOrBuy: 'sell',
@@ -17,11 +16,20 @@ export default class CreateAd extends Component {
             formUrl: '',
         }
       }
+      evaluator = () => {
+        if(this.state.responseState.success === false){
+          this.setState({importantInfo: "Ha ocurrido un error, vuelve a intentarlo en unos instantes"});
+        }
+        else if(this.state.responseState.success === true){
+            this.setState({importantInfo: "Todo ha ido perfecto, te redirigimos al listado para que puedas ver tu anuncio"});
+          setTimeout(function(){ window.location.pathname = 'ads'; }, 3000);
+        }
+
+      }
       adCreator = async () => {
         let arrayTag = [this.state.formTags];
         this.setState({responseState: await createAd(this.state.formName, this.state.formPriceMin, this.state.formTextAreaDescription, arrayTag, this.state.formSellOrBuy, this.state.formUrl)});
-        //this.evaluator();
-        console.log(this.state.responseState);
+        this.evaluator();
       }
     nameController = (event) => {
         this.setState({formName: event.target.value});
@@ -40,7 +48,6 @@ export default class CreateAd extends Component {
       }
       textAreaController = (event) => {
         this.setState({formTextAreaDescription: event.target.value});
-        console.log(this.state.formTextAreaDescription);
         }
       onSubmitController = (event) => {
         event.preventDefault();
@@ -73,6 +80,7 @@ export default class CreateAd extends Component {
                     <br/>
                     <input type="submit" value="Subir!"></input>
                 </form>
+                <h1>{this.state.importantInfo}</h1>
             </div>
         );
     }
