@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {createAd} from './../api-calls/api-calls';
 export default class CreateAd extends Component {
     constructor(props){
         super(props);
@@ -15,6 +16,12 @@ export default class CreateAd extends Component {
             formTextAreaDescription: '',
             formUrl: '',
         }
+      }
+      adCreator = async () => {
+        let arrayTag = [this.state.formTags];
+        this.setState({responseState: await createAd(this.state.formName, this.state.formPriceMin, this.state.formTextAreaDescription, arrayTag, this.state.formSellOrBuy, this.state.formUrl)});
+        //this.evaluator();
+        console.log(this.state.responseState);
       }
     nameController = (event) => {
         this.setState({formName: event.target.value});
@@ -33,16 +40,11 @@ export default class CreateAd extends Component {
       }
       textAreaController = (event) => {
         this.setState({formTextAreaDescription: event.target.value});
+        console.log(this.state.formTextAreaDescription);
         }
       onSubmitController = (event) => {
         event.preventDefault();
-        alert(`${this.state.formName}
-        ${this.state.formSellOrBuy}
-        ${this.state.formTags}
-        ${this.state.formPriceMin}
-        ${this.state.formUrl}
-        ${this.state.formTextAreaDescription}
-        `);
+        this.adCreator();
       }
     render() {
         const {formName, formTags, formSellOrBuy, formPriceMin, formTextAreaDescription, formUrl} = this.state;
