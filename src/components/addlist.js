@@ -63,7 +63,7 @@ onSubmitController = (event) => {
   this.adCaller();
 }
   render(){
-    const {formName, formDescription, formTags, formPriceMin, formPriceMax} = this.state;
+    const {formName, formTags, formPriceMin, formPriceMax} = this.state;
     return(
       <>
         <form onSubmit={this.onSubmitController}>

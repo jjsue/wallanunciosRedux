@@ -4,6 +4,7 @@ import RegisterComp from './register';
 import LoginComp from './login'
 import AdsComp from './addlist'
 import DetailComponent from './detail'
+import CreateAd from './create-add';
 export default class MyRouter extends Component{
   constructor(props){
     super(props);
@@ -14,6 +15,9 @@ export default class MyRouter extends Component{
             <Router>    
                 <nav>
                     <ul>
+                        <li>
+                            <Link to = "/createad">Crear Anuncio</Link>
+                        </li>
                         <li>
                             <Link to = "/ads">Anuncios</Link>
                         </li>
@@ -31,6 +35,7 @@ export default class MyRouter extends Component{
                     <Route path="/ads/:adId" component={DetailComponent} />
                     <Route path="/register" component={RegisterComp} />
                     <Route path="/login" component={LoginComp} />
+                    <Route path="/createad" component={CreateAd} />
                 </Switch>
             </Router>
             </>
