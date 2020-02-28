@@ -104,4 +104,28 @@ async function createAd(name, price, desc, tag, type, photo){
             console.log("Terminada llamada");
         })
 }
-export {registerCall, loginCall, addCall, detailCall, createAd};
+async function modifyAd(name, price, desc, tag, type, photo,idMongo){
+    return axios({
+        method: 'PUT',
+        url: `http://34.89.93.186:8080/apiv1/anuncios/${idMongo}`,
+        data: {
+            name: `${name}`,
+            price: `${price}`,
+            description: `${desc}`,
+            tags: `${tag}`,
+            type: `${type}`,
+            photo: `${photo}`,
+        },
+        withCredentials: true,
+        })
+        .then(function (response) {
+            return response.data;
+        })
+        .catch(function (error) {
+            return error.response.data;
+        })
+        .finally(function () {
+            console.log("Terminada llamada");
+        })
+}
+export {registerCall, loginCall, addCall, detailCall, createAd, modifyAd};
