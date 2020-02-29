@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import MyRouter from './components/router';
-export default class App extends Component{
-  render(){
-    return(
+export default class App extends Component {
+  render() {
+    return (
       <>
-        <MyRouter/>
+        <MyRouter />
       </>
     )
   }

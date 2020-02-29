@@ -94,10 +94,8 @@ class ModifyAd extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //Llamadas:
             responseState: null,
             importantInfo: null,
-            //Forms:
             formName: this.props.data.name,
             formSellOrBuy: this.props.data.type,
             formTags: this.props.data.tags[0],
@@ -151,33 +149,33 @@ class ModifyAd extends Component {
                 <h1 className="text-white m-2">Modifica este anuncio:</h1>
                 <form className="m-2" onSubmit={this.onSubmitController}>
                     <div className="flexwrap d-flex flex-wrap justify-content-between">
-                    <div className="form-group m-2 flex-fill">
-                        <input className="form-control mt-1" required type="text" id="name" placeholder="Nombre" value={formName} onChange={this.nameController}></input>
-                        <select className="form-control mt-1" id="compra-venta" value={formSellOrBuy} onChange={this.sellController}>
-                            <option value="sell">Venta</option>
-                            <option value="buy">Compra</option>
-                        </select>
-                        <select className="form-control mt-1" id="tags" value={formTags} onChange={this.tagController}>
-                            <option value="lifestyle" selected>Lifestyle</option>
-                            <option value="mobile">Mobile</option>
-                            <option value="motor">Motor</option>
-                            <option value="work">Work</option>
-                        </select>
+                        <div className="form-group m-2 flex-fill">
+                            <input className="form-control mt-1" required type="text" id="name" placeholder="Nombre" value={formName} onChange={this.nameController}></input>
+                            <select className="form-control mt-1" id="compra-venta" value={formSellOrBuy} onChange={this.sellController}>
+                                <option value="sell">Venta</option>
+                                <option value="buy">Compra</option>
+                            </select>
+                            <select className="form-control mt-1" id="tags" value={formTags} onChange={this.tagController}>
+                                <option value="lifestyle" selected>Lifestyle</option>
+                                <option value="mobile">Mobile</option>
+                                <option value="motor">Motor</option>
+                                <option value="work">Work</option>
+                            </select>
+                        </div>
+                        <div className="form-group m-2 flex-fill">
+                            <p className="mt-1 text-white">Precio en euros:</p>
+                            <input className="form-control mt-1" required type="number" placeholder="Precio" value={formPriceMin} onChange={this.priceController}></input>
+                        </div>
+                        <div className="form-group m-2 flex-fill">
+                            <p className="mt-1 text-white">Imagen:</p>
+                            <input className="form-control mt-1" required type="url" value={formUrl} placeholder="Pega aquí la URL de la imagen" onChange={this.urlController}></input>
+                        </div>
+                        <div className="form-group m-2 flex-fill">
+                            <p className="mt-1 text-white">Descripcion del anuncio:</p>
+                            <textarea className="form-control mt-1" required value={formTextAreaDescription} placeholder="Descripción" onChange={this.textAreaController}></textarea>
+                        </div>
                     </div>
-                    <div className="form-group m-2 flex-fill">
-                        <p className="mt-1 text-white">Precio en euros:</p>
-                        <input className="form-control mt-1" required type="number" placeholder="Precio" value={formPriceMin} onChange={this.priceController}></input>
-                    </div>
-                    <div className="form-group m-2 flex-fill">
-                        <p className="mt-1 text-white">Imagen:</p>
-                        <input className="form-control mt-1" required type="url" value={formUrl} placeholder="Pega aquí la URL de la imagen" onChange={this.urlController}></input>
-                    </div>
-                    <div className="form-group m-2 flex-fill">
-                        <p className="mt-1 text-white">Descripcion del anuncio:</p>
-                        <textarea className="form-control mt-1" required value={formTextAreaDescription} placeholder="Descripción" onChange={this.textAreaController}></textarea>
-                    </div>
-                    </div>
-                        <input className="btn btn-secondary form-control mt-2" type="submit" value="Modificar!"></input>
+                    <input className="btn btn-secondary form-control mt-2" type="submit" value="Modificar!"></input>
                 </form>
                 <h1 className="text-info">{this.state.importantInfo}</h1>
             </div>
