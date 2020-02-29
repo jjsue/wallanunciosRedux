@@ -4,8 +4,8 @@ export default class Register extends Component{
   constructor(props){
     super(props);
     this.state = {
-        mailValue: 'prueba@prueba.com',
-        passwordValue: '1234',
+        mailValue: '',
+        passwordValue: '',
         responseState: null,
         responseMessage: ''
     }
@@ -38,12 +38,12 @@ export default class Register extends Component{
                 <p className="m-2 text-white">Para empezar a publicar necesitamos que te registres:</p>
                 <form onSubmit={this.submitHandler}>
                     <div className="form-group m-2">
-                        <input className="form-control mt-1" type='email' value={mailValue} required onChange={this.changeHandlerMail}></input><br/>
-                        <input className="form-control mt-1" type='password' value={passwordValue} required onChange={this.changeHandlerPass}></input><br/>
+                        <input className="form-control mt-1" placeholder="Introduce tu correo electronico" type='email' value={mailValue} required onChange={this.changeHandlerMail}></input><br/>
+                        <input className="form-control mt-1" placeholder="Introduce tu contraseña" type='password' value={passwordValue} required onChange={this.changeHandlerPass}></input><br/>
                         <input className="form-control mt-1 btn btn-secondary" type='submit' value='Registro'></input><br/>
                     </div>
                 </form>
-                <h2>{this.state.responseMessage}</h2>
+                <h2 className="text-info m-2">{this.state.responseMessage}</h2>
             </div>
         )
     }
