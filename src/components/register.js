@@ -34,12 +34,14 @@ export default class Register extends Component{
         const {mailValue, passwordValue} = this.state;
         return(
             <div className='register'>
-                <h1>Bienvenido a Wallanuncios</h1>
-                <p>Para empezar a publicar necesitamos que te registres:</p>
+                <h1 className="m-2 text-white">¡Bienvenido a Wallanuncios!</h1>
+                <p className="m-2 text-white">Para empezar a publicar necesitamos que te registres:</p>
                 <form onSubmit={this.submitHandler}>
-                    <input type='email' value={mailValue} required onChange={this.changeHandlerMail}></input><br/>
-                    <input type='password' value={passwordValue} required onChange={this.changeHandlerPass}></input><br/>
-                    <input type='submit' value='Registro'></input><br/>
+                    <div className="form-group m-2">
+                        <input className="form-control mt-1" type='email' value={mailValue} required onChange={this.changeHandlerMail}></input><br/>
+                        <input className="form-control mt-1" type='password' value={passwordValue} required onChange={this.changeHandlerPass}></input><br/>
+                        <input className="form-control mt-1 btn btn-secondary" type='submit' value='Registro'></input><br/>
+                    </div>
                 </form>
                 <h2>{this.state.responseMessage}</h2>
             </div>

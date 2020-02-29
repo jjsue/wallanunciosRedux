@@ -58,7 +58,7 @@ export default class CreateAd extends Component {
         return (
             <div className="createadd bg-dark">
                 <h1 className="text-white m-2">Crea tu anuncio:</h1>
-                <form className="" onSubmit={this.onSubmitController}>
+                <form onSubmit={this.onSubmitController}>
                     <div className="form-group m-2">
                     <input className="form-control mt-2" required type="text" id="name" placeholder="Nombre" value={formName} onChange={this.nameController}></input>
                     <select className="form-control mt-2" id="compra-venta" value={formSellOrBuy} onChange={this.sellController}>
