@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
+const cardStyle = {
+  width: '20%',
+  height: 'auto',
+};
 class AddMount extends Component{
     render(){
       return(
         <>
-        <div className="Anuncio">
-          <Link to={`/ads/${this.props.data._id}`}><h2>{this.props.data.name}</h2></Link>
-          <img src={this.props.data.photo} alt={this.props.data.name}/> 
-          <p>Precio: {this.props.data.price}</p>
-          <p>{this.props.data.type}</p>
+        <div className="card card-apoyo m-2 bg-secondary" style={cardStyle}>
+          <img className="card-img-top" src={this.props.data.photo} alt={this.props.data.name}/> 
+          <div className="card-body">
+          <h2 className="card-title">{this.props.data.name}</h2>
+          <p className="card-text">Precio: {this.props.data.price}</p>
+          <Link to={`/ads/${this.props.data._id}`}><p className="btn btn-info">Detalle</p></Link>
+          </div>
         </div>
         </>
       )
@@ -29,7 +35,7 @@ function RenderOrNot(props) {
       toShow.push(<AddMount key = {i} data = {props.data.results[i]}/>);
     }
     return(
-    <div className="Anuncios">
+    <div className="mx-auto anuncios d-flex flex-wrap justify-content-around mt-0 bg-dark">
       {toShow}
     </div>
     )

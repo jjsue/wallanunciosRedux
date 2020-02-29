@@ -90,7 +90,6 @@ onSubmitController = (event) => {
           </div>
           <input className="btn btn-secondary form-control" type="submit" value="Buscar"></input>
         </form>
-        <h1>Listado de anuncios:</h1>
         <RenderOrNot callDo={this.state.childrenToRender} data={this.state.responseState}/>
         <p>{this.state.importantInfo}</p>
       </>
