@@ -19,9 +19,6 @@ async function registerCall(user,pass){
             .catch(function (error) {
                 return error.response.data;
             })
-            .finally(function () {
-                console.log("Terminada llamada");
-            })
 }
 
 async function loginCall(user,pass){
@@ -43,9 +40,6 @@ async function loginCall(user,pass){
         .catch(function (error) {
             return error.response.data;
         })
-        .finally(function () {
-            console.log("Terminada llamada");
-        })
 }
 async function addCall(query){
     return axios({
@@ -59,9 +53,6 @@ async function addCall(query){
         .catch(function (error) {
             return error.response.data;
         })
-        .finally(function () {
-            console.log("Terminada llamada");
-        })
 }
 async function detailCall(id){
     return axios({
@@ -74,9 +65,6 @@ async function detailCall(id){
         })
         .catch(function (error) {
             return error.response.data;
-        })
-        .finally(function () {
-            console.log("Terminada llamada");
         })
 }
 
@@ -100,9 +88,6 @@ async function createAd(name, price, desc, tag, type, photo){
         .catch(function (error) {
             return error.response.data;
         })
-        .finally(function () {
-            console.log("Terminada llamada");
-        })
 }
 async function modifyAd(name, price, desc, tag, type, photo,idMongo){
     return axios({
@@ -123,9 +108,6 @@ async function modifyAd(name, price, desc, tag, type, photo,idMongo){
         })
         .catch(function (error) {
             return error.response.data;
-        })
-        .finally(function () {
-            console.log("Terminada llamada");
         })
 }
 export {registerCall, loginCall, addCall, detailCall, createAd, modifyAd};

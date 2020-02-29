@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch, withRouter, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
 import RegisterComp from './register';
 import LoginComp from './login'
 import AdsComp from './addlist'
 import DetailComponent from './detail'
 import CreateAd from './create-add';
 export default class MyRouter extends Component{
-  constructor(props){
-    super(props);
-  }
     render(){
         return(
             <>
