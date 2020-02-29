@@ -10,23 +10,22 @@ export default class MyRouter extends Component{
         return(
             <>
             <Router>    
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to = "/createad">Crear Anuncio</Link>
+                <nav className="bg-primary">
+                    <ul className="nav nav-pills nav-fills navbar navbar-light bg-light">
+                        <li className="nav-item btn">
+                            <Link to = "/createad" className="nav-link">Crear Anuncio</Link>
                         </li>
-                        <li>
-                            <Link to = "/ads">Anuncios</Link>
+                        <li className="nav-item">
+                            <Link to = "/ads" className="nav-link">Anuncios</Link>
                         </li>
-                        <li>
-                            <Link to = "/register">Registrarse</Link>
+                        <li className="nav-item">
+                            <Link to = "/register" className="nav-link">Registrarse</Link>
                         </li>
-                        <li>
-                            <Link to = "/login">Iniciar sesión</Link>
+                        <li className="nav-item">
+                            <Link to = "/login" className="nav-link">Iniciar sesión</Link>
                         </li>
                     </ul>
                 </nav>
-                <hr/>
                 <Switch>
                     <Route exact path="/ads" component={AdsComp} />
                     <Route path="/ads/:adId" component={DetailComponent} />
