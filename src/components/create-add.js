@@ -65,7 +65,7 @@ export default class CreateAd extends Component {
                         <option value="buy">Compra</option>
                     </select>
                     <select id="tags" value={formTags} onChange={this.tagController}>
-                        <option value="lifestyle" selected>Lifestyle</option>
+                        <option value="lifestyle">Lifestyle</option>
                         <option value="mobile">Mobile</option>
                         <option value="motor">Motor</option>
                         <option value="work">Work</option>
