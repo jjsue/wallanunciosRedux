@@ -63,25 +63,23 @@ onSubmitController = (event) => {
   this.adCaller();
 }
   render(){
-    const {formName, formTags, formPriceMin, formPriceMax} = this.state;
+    const {formName, formTags, formPriceMin, formPriceMax, formSellOrBuy} = this.state;
     return(
       <>
         <form onSubmit={this.onSubmitController}>
           <h1>Busqueda:</h1>
           <input type="text" id="name" placeholder="Nombre" value={formName} onChange={this.nameController}></input>
-          <select id="compra-venta" onChange={this.sellController}>
+          <select id="compra-venta" value={formSellOrBuy} onChange={this.sellController}>
             <option value = "buy">Compra</option>
             <option value = "sell">Venta</option>
-            <option value = "">Ninguno</option>
-            <option value = {formTags} selected>Compra o Venta</option>
+            <option value = "">Compra y venta</option>
           </select>
-          <select id="tags" onChange={this.tagController}>
+          <select id="tags" value={formTags} onChange={this.tagController}>
             <option value = "lifestyle">Lifestyle</option>
             <option value = "mobile">Mobile</option>
             <option value = "motor">Motor</option>
             <option value = "work">Work</option>
             <option value = "">Ninguno</option>
-            <option value = {formTags} selected>Tag</option>
           </select>
           <fieldset>
             <p>Precio:</p>
