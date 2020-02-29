@@ -66,26 +66,29 @@ onSubmitController = (event) => {
     const {formName, formTags, formPriceMin, formPriceMax, formSellOrBuy} = this.state;
     return(
       <>
-        <form onSubmit={this.onSubmitController}>
-          <h1>Busqueda:</h1>
-          <input type="text" id="name" placeholder="Nombre" value={formName} onChange={this.nameController}></input>
-          <select id="compra-venta" value={formSellOrBuy} onChange={this.sellController}>
+        <form className="bg-dark" onSubmit={this.onSubmitController}>
+          <h2 className="m-2 text-white">Filtros:</h2>
+          <div className="form-group d-flex">
+          <input className="form-control m-2" type="text" id="name" placeholder="Nombre" value={formName} onChange={this.nameController}></input>
+          <select className="form-control m-2" id="compra-venta" value={formSellOrBuy} onChange={this.sellController}>
             <option value = "buy">Compra</option>
             <option value = "sell">Venta</option>
             <option value = "">Compra y venta</option>
           </select>
-          <select id="tags" value={formTags} onChange={this.tagController}>
+          <select className = "form-control m-2" id="tags" value={formTags} onChange={this.tagController}>
             <option value = "lifestyle">Lifestyle</option>
             <option value = "mobile">Mobile</option>
             <option value = "motor">Motor</option>
             <option value = "work">Work</option>
             <option value = "">Ninguno</option>
           </select>
-          <fieldset>
-            <p>Precio:</p>
-            <input type="number" placeholder="Minimo" value={formPriceMin} onChange={this.priceMinController}></input> - <input type="number" placeholder="Maximo" value={formPriceMax} onChange={this.priceMaxController}></input>
-          </fieldset>
-          <input type="submit" value="Buscar"></input>
+          </div>
+          <h2 className="m-2 text-white">Precio:</h2>
+          <div className="form-group d-flex">
+            <input className="form-control m-2" type="number" placeholder="Minimo" value={formPriceMin} onChange={this.priceMinController}></input>
+            <input className="form-control m-2" type="number" placeholder="Maximo" value={formPriceMax} onChange={this.priceMaxController}></input>
+          </div>
+          <input className="btn btn-secondary form-control" type="submit" value="Buscar"></input>
         </form>
         <h1>Listado de anuncios:</h1>
         <RenderOrNot callDo={this.state.childrenToRender} data={this.state.responseState}/>
