@@ -56,31 +56,28 @@ export default class CreateAd extends Component {
     render() {
         const {formName, formTags, formSellOrBuy, formPriceMin, formTextAreaDescription, formUrl} = this.state;
         return (
-            <div className="Crea tu anuncio">
-                <h1>Crea tu anuncio:</h1>
-                <form onSubmit={this.onSubmitController}>
-                    <input required type="text" id="name" placeholder="Nombre" value={formName} onChange={this.nameController}></input>
-                    <select id="compra-venta" value={formSellOrBuy} onChange={this.sellController}>
+            <div className="createadd bg-dark">
+                <h1 className="text-white m-2">Crea tu anuncio:</h1>
+                <form className="" onSubmit={this.onSubmitController}>
+                    <div className="form-group m-2">
+                    <input className="form-control mt-2" required type="text" id="name" placeholder="Nombre" value={formName} onChange={this.nameController}></input>
+                    <select className="form-control mt-2" id="compra-venta" value={formSellOrBuy} onChange={this.sellController}>
                         <option value="sell">Venta</option>
                         <option value="buy">Compra</option>
                     </select>
-                    <select id="tags" value={formTags} onChange={this.tagController}>
+                    <select className="form-control mt-2" id="tags" value={formTags} onChange={this.tagController}>
                         <option value="lifestyle">Lifestyle</option>
                         <option value="mobile">Mobile</option>
                         <option value="motor">Motor</option>
                         <option value="work">Work</option>
                     </select>
-                    <p>Precio en euros:</p>
-                    <input required type="number" placeholder="Precio" value={formPriceMin} onChange={this.priceController}></input>
-                    <p>Imagen:</p>
-                    <input required type="url" value={formUrl} placeholder="Pega aquí la URL de la imagen" onChange={this.urlController}></input>
-                    <br/>
-                    <p>Descripcion del anuncio:</p>
-                    <textarea required value={formTextAreaDescription} placeholder="Descripción" onChange={this.textAreaController}></textarea>
-                    <br/>
-                    <input type="submit" value="Subir!"></input>
+                    <input className="form-control mt-2" required type="number" placeholder="Precio" value={formPriceMin} onChange={this.priceController}></input>
+                    <input className="form-control mt-2" required type="url" value={formUrl} placeholder="Pega aquí la URL de la imagen" onChange={this.urlController}></input>
+                    <textarea className="form-control mt-2" required value={formTextAreaDescription} placeholder="Descripción" onChange={this.textAreaController}></textarea>
+                    <input className="btn btn-secondary form-control mt-2" type="submit" value="Subir!"></input>
+                    </div>
                 </form>
-                <h1>{this.state.importantInfo}</h1>
+                <h1 className="text-info m-2">{this.state.importantInfo}</h1>
             </div>
         );
     }
