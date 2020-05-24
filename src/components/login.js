@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { loginCall } from './../api-calls/api-calls'
+//Importamos la store
+import {store} from './../index';
+import addUsername from './../actions/addUsername';
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +26,8 @@ export default class Login extends Component {
             this.setState({ responseMessage: this.state.responseState.error });
         }
         else if (this.state.responseState.success === true) {
+            store.dispatch(addUsername(this.state.username));
+            console.log(store.getState().username);
             this.setState({ responseMessage: "Bienvenido de nuevo" });
         }
         else {
