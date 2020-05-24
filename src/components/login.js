@@ -26,8 +26,7 @@ export default class Login extends Component {
             this.setState({ responseMessage: this.state.responseState.error });
         }
         else if (this.state.responseState.success === true) {
-            store.dispatch(addUsername(this.state.username));
-            console.log(store.getState().username);
+            store.dispatch(addUsername(this.state.mailValue));
             this.setState({ responseMessage: "Bienvenido de nuevo" });
         }
         else {
