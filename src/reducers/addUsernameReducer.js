@@ -9,7 +9,6 @@ const userNameReducer = (state, action) => {
     }
     switch (action.type) {
         case 'READ_USERNAME_LOCALSTORAGE':
-            console.log(localStorage.getItem('username'));
             if (localStorage.getItem('username') !== null) { // Comprobar que efectivamente el campo existe.
                 return localStorage.getItem('username');
             } else {
