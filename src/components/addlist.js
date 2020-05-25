@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { addCall } from './../api-calls/api-calls';
 import { RenderOrNot, createQueryString } from './addlist-utils';
-
+import { store } from './../index';
+import { adStorage } from './../actions/adStorage';
 export default class AdsList extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +33,8 @@ export default class AdsList extends Component {
   }
   adCaller = async () => {
     this.setState({ responseState: await addCall(createQueryString(this.state.formName, this.state.formSellOrBuy, this.state.formTags, this.state.formPriceMin, this.state.formPriceMax)) });
+    //Aqui vamos a meter la action cuyo payload sea el createQueryString
+    store.dispatch(adStorage(await addCall(createQueryString(this.state.formName, this.state.formSellOrBuy, this.state.formTags, this.state.formPriceMin, this.state.formPriceMax))));
     this.evaluator();
   }
   componentDidMount() {
