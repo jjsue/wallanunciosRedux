@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Link } from "react-router-dom";
+import { store } from './../index';
 const cardStyle = {
   width: '20%',
   height: 'auto',
@@ -9,11 +10,11 @@ class AddMount extends Component {
     return (
       <>
         <div className="card card-apoyo m-2 bg-secondary" style={cardStyle}>
-          <img className="card-img-top" src={this.props.data.photo} alt={this.props.data.name} />
+          <img className="card-img-top" src={store.getState().adList.results[this.props.counter].photo} alt={store.getState().adList.results[this.props.counter].name} />
           <div className="card-body">
-            <h2 className="card-title">{this.props.data.name}</h2>
-            <p className="card-text">Precio: {this.props.data.price}</p>
-            <Link to={`/ads/${this.props.data._id}`}><p className="btn btn-info">Detalle</p></Link>
+            <h2 className="card-title">{store.getState().adList.results[this.props.counter].name}</h2>
+            <p className="card-text">Precio: {store.getState().adList.results[this.props.counter].price}</p>
+            <Link to={`/ads/${store.getState().adList.results[this.props.counter]._id}`}><p className="btn btn-info">Detalle</p></Link>
           </div>
         </div>
       </>
@@ -31,8 +32,8 @@ function RenderOrNot(props) {
   const callDo = props.callDo;
   let toShow = [];
   if (callDo) {
-    for (let i = 0; i < props.data.count; i++) {
-      toShow.push(<AddMount key={i} data={props.data.results[i]} />);
+    for (let i = 0; i < store.getState().adList.count; i++) {
+      toShow.push(<AddMount key={i} counter={i} />);
     }
     return (
       <div className="mx-auto anuncios d-flex flex-wrap justify-content-around mt-0 bg-dark">

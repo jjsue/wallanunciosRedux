@@ -19,11 +19,11 @@ export default class AdsList extends Component {
     }
   }
   evaluator = () => {
-    if (this.state.responseState.success === false) {
+    if (store.getState().adList.success === false) {
       this.setState({ importantInfo: "Ha ocurrido un error, te redirigimos al login para que puedas volver a iniciar sesión e intentarlo de nuevo." });
       setTimeout(function () { window.location.pathname = 'login'; }, 3000);
     }
-    else if (this.state.responseState.success === true) {
+    else if (store.getState().adList.success === true) {
       this.setState({ childrenToRender: true });
     }
     else {
@@ -32,9 +32,10 @@ export default class AdsList extends Component {
     }
   }
   adCaller = async () => {
-    this.setState({ responseState: await addCall(createQueryString(this.state.formName, this.state.formSellOrBuy, this.state.formTags, this.state.formPriceMin, this.state.formPriceMax)) });
     //Aqui vamos a meter la action cuyo payload sea el createQueryString
     store.dispatch(adStorage(await addCall(createQueryString(this.state.formName, this.state.formSellOrBuy, this.state.formTags, this.state.formPriceMin, this.state.formPriceMax))));
+    //this.setState({responseState: store.getState().adList});
+    console.log(store.getState().adList.success);
     this.evaluator();
   }
   componentDidMount() {
