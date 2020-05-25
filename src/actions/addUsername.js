@@ -7,5 +7,5 @@ const addUsername = (username) => {
             username
         },
     }
-}
+};
 export default addUsername;

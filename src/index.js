@@ -5,8 +5,13 @@ import App from './App';
 import { createStore } from 'redux';
 //Este es el combineReducers
 import reducer from './reducers/index';
+// const initialState = {
+//     username: 'Anonimo',
+//     reduxAds: [],
+// };
+
 const initialState = {
-    username: 'Anonimo',
+    username: '',
     reduxAds: [],
 };
 
