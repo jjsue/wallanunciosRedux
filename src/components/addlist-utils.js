@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import { store } from './../index';
 const cardStyle = {
   width: '20%',
@@ -21,7 +21,6 @@ class AddMount extends Component {
     )
   }
 }
-
 class AddMount3 extends Component {
   render() {
     return null;

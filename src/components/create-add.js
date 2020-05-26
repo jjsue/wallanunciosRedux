@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { createAd } from './../api-calls/api-calls';
+import {adCreate} from './../actions/adCreate';
+import {store} from './../index';
+import { RenderOrNot, createQueryString } from './addlist-utils';
 export default class CreateAd extends Component {
   constructor(props) {
     super(props);
@@ -15,18 +18,17 @@ export default class CreateAd extends Component {
     }
   }
   evaluator = () => {
-    if (this.state.responseState.success === false) {
+    if (store.getState().adCreate.success === false) {
       this.setState({ importantInfo: "Ha ocurrido un error, vuelve a intentarlo en unos instantes" });
     }
-    else if (this.state.responseState.success === true) {
-      this.setState({ importantInfo: "Todo ha ido perfecto, te redirigimos al listado para que puedas ver tu anuncio" });
-      setTimeout(function () { window.location.pathname = 'ads'; }, 3000);
+    else if (store.getState().adCreate.success === true) {
+      this.setState({ importantInfo: "Todo ha ido bien, pincha en el listado y podrás ver tu anuncio. Aqui tienes una pequeña muestra:" });
     }
-
   }
   adCreator = async () => {
     let arrayTag = [this.state.formTags];
     this.setState({ responseState: await createAd(this.state.formName, this.state.formPriceMin, this.state.formTextAreaDescription, arrayTag, this.state.formSellOrBuy, this.state.formUrl) });
+    store.dispatch(adCreate(await createAd(this.state.formName, this.state.formPriceMin, this.state.formTextAreaDescription, arrayTag, this.state.formSellOrBuy, this.state.formUrl)));
     this.evaluator();
   }
   nameController = (event) => {

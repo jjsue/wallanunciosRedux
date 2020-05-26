@@ -7,7 +7,6 @@ export default class AdsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      responseState: null,
       importantInfo: null,
       childrenToRender: false,
       formName: '',
@@ -34,8 +33,6 @@ export default class AdsList extends Component {
   adCaller = async () => {
     //Aqui vamos a meter la action cuyo payload sea el createQueryString
     store.dispatch(adStorage(await addCall(createQueryString(this.state.formName, this.state.formSellOrBuy, this.state.formTags, this.state.formPriceMin, this.state.formPriceMax))));
-    //this.setState({responseState: store.getState().adList});
-    console.log(store.getState().adList.success);
     this.evaluator();
   }
   componentDidMount() {
@@ -59,7 +56,6 @@ export default class AdsList extends Component {
   onSubmitController = (event) => {
     event.preventDefault();
     this.setState({ childrenToRender: false });
-    this.setState({ responseState: null });
     this.adCaller();
   }
   render() {
