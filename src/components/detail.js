@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { detailCall, modifyAd } from './../api-calls/api-calls'
+import {store} from './../index'
+import {detailAction} from './../actions/detailAndModify';
 export default class DetailComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pageId: null,
-            responseState: null,
             whatWeRender: <DetailIsLoading />,
         }
     }
     evaluator = () => {
-        console.log(this.state.responseState);
-        if (this.state.responseState.success) {
-            this.setState({ whatWeRender: <DetailIsOk data={this.state.responseState.result} /> });
+        if (store.getState().detail.success) {
+            this.setState({ whatWeRender: <DetailIsOk /> });
         }
         else {
             this.setState({ whatWeRender: <DetailIsNotOk /> });
@@ -20,9 +19,7 @@ export default class DetailComponent extends Component {
     }
 
     adCaller = async (id) => {
-        this.setState({ responseState: await detailCall(id) })
-        this.setState({ pageId: id });
-        console.log(this.state.pageId);
+        store.dispatch(detailAction(await detailCall(id)));
         this.evaluator();
     }
     componentDidMount() {
@@ -50,19 +47,18 @@ class DetailIsOk extends Component {
     }
     onSubmitController = (event) => {
         event.preventDefault();
-        this.setState({ whatWeRender: <ModifyAd data={this.props.data} /> });
-        console.log(this.props.propId);
+        this.setState({ whatWeRender: <ModifyAd /> });
     }
     render() {
         return (
             <>
-                <h1 className="text-white m-auto">{this.props.data.name}</h1>
-                <img className="text-white m-auto" src={this.props.data.photo} alt={this.props.data.name} />
+                <h1 className="text-white m-auto">{store.getState().detail.result.name}</h1>
+                <img className="text-white m-auto" src={store.getState().detail.result.photo} alt={store.getState().detail.result.name} />
                 <h2 className="text-white m-2">Descripción y precio:</h2>
-                <p className="text-white m-2">{this.props.data.description}</p>
-                <p className="text-white m-2">{this.props.data.price} €</p>
+                <p className="text-white m-2">{store.getState().detail.result.description}</p>
+                <p className="text-white m-2">{store.getState().detail.result.price} €</p>
                 <h5 className="text-white m-2">¿Compra o venta?</h5>
-                <p className="text-white m-2">{this.props.data.type}</p>
+                <p className="text-white m-2">{store.getState().detail.result.type}</p>
                 <form className="m-2" onSubmit={this.onSubmitController}>
                     <input className="form-control bg-secondary text-white" type="submit" value="Modificar este anuncio"></input>
                 </form>
@@ -96,13 +92,13 @@ class ModifyAd extends Component {
         this.state = {
             responseState: null,
             importantInfo: null,
-            formName: this.props.data.name,
-            formSellOrBuy: this.props.data.type,
-            formTags: this.props.data.tags[0],
-            formPriceMin: this.props.data.price,
-            formTextAreaDescription: this.props.data.description,
-            formUrl: this.props.data.photo,
-            formIdMongo: this.props.data._id,
+            formName: store.getState().detail.result.name,
+            formSellOrBuy: store.getState().detail.result.type,
+            formTags: store.getState().detail.result.tags[0],
+            formPriceMin: store.getState().detail.result.price,
+            formTextAreaDescription: store.getState().detail.result.description,
+            formUrl: store.getState().detail.result.photo,
+            formIdMongo: store.getState().detail.result._id,
         }
     }
     evaluator = () => {
