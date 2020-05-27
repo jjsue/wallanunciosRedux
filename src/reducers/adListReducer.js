@@ -10,7 +10,6 @@ const adListReducer = (state, action) => {
             newState = action.payload.adData
             return newState
         default:
-            console.log("default");
             return state;
     }
 }

@@ -18,4 +18,3 @@ export default class Login extends Component {
         )
     }
 }
-{/* <this.state.form callType={loginCall} message="Bienvenido de nuevo" /> */}

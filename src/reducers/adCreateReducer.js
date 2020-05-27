@@ -39,7 +39,6 @@ const adCreateReducer = (state, action) => {
             return newState;
 
         default:
-            console.log("default");
             return state;
     }
 }
