@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
 import { registerCall } from './../api-calls/api-calls';
 import formLoginAndRegister from './loginAndRegisterForms';
 export default class Register extends Component {
