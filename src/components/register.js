@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { registerCall } from './../api-calls/api-calls';
-import formLoginAndRegister from './loginAndRegisterForms';
+import FormLoginAndRegister from './loginAndRegisterForms';
 export default class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            form: formLoginAndRegister
+            form: FormLoginAndRegister
         }
     }
     render() {

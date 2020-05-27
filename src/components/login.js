@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import formLoginAndRegister from './loginAndRegisterForms';
+import FormLoginAndRegister from './loginAndRegisterForms';
 import { loginCall } from './../api-calls/api-calls'
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            form: formLoginAndRegister
+            form: FormLoginAndRegister
         }
     }
     render() {
@@ -18,3 +18,4 @@ export default class Login extends Component {
         )
     }
 }
+{/* <this.state.form callType={loginCall} message="Bienvenido de nuevo" /> */}
