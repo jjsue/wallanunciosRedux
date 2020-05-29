@@ -1,7 +1,6 @@
 const initialDetail = {}
 const detailReducer = (state, action) => {
     let newState = state;
-    //Inicializacion del estado.
     if (state === undefined) {
         return initialDetail;
     }

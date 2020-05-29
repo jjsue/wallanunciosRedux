@@ -31,7 +31,6 @@ export default class AdsList extends Component {
     }
   }
   adCaller = async () => {
-    //Aqui vamos a meter la action cuyo payload sea el createQueryString
     store.dispatch(adStorage(await addCall(createQueryString(this.state.formName, this.state.formSellOrBuy, this.state.formTags, this.state.formPriceMin, this.state.formPriceMax))));
     this.evaluator();
   }

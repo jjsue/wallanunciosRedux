@@ -1,5 +1,5 @@
 import { userNameReducer } from './../reducers/addUsernameReducer';
-require('jest-localstorage-mock'); //Con esto hacemos un mock de la localstorage
+require('jest-localstorage-mock');
 
 describe('Reducers', () => {
     describe('userNameReducer', () => {

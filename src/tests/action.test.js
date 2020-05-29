@@ -1,5 +1,5 @@
 import addUsername from './../actions/addUsername';
-require('jest-localstorage-mock'); //Con esto hacemos un mock de la localstorage
+require('jest-localstorage-mock');
 
 describe('Actions', () => {
     describe('addUsernameAction', () => {

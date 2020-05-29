@@ -1,7 +1,6 @@
 const initialAdlist = {}
 const adListReducer = (state, action) => {
     let newState = state;
-    //Inicializacion del estado.
     if (state === undefined) {
         return initialAdlist;
     }

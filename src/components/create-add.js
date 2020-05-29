@@ -55,7 +55,6 @@ export default class CreateAd extends Component {
     this.adCreator();
   }
   render() {
-    //const { formName, formTags, formSellOrBuy, formPriceMin, formTextAreaDescription, formUrl } = this.state;
     let name = store.getState().adCreate.sendData.name
     const sellOrBuy = store.getState().adCreate.sendData.sellOrBuy
     const tags = store.getState().adCreate.sendData.tags
